@@ -1,0 +1,16 @@
+
+<div class="container">
+  <h1 class="">Urban Dictionary</h1>
+
+ <form>
+  <div class="form-group">
+    <input type="text" name="word" class="form-control" #word placeholder="Search words..">
+  </div>
+  <button (click)="getWordDefinition(word.value)" type="submit" class="btn btn-primary">Search</button>
+</form>
+</div>
+<app-word-list *ngFor="let word of words" ></app-word-list>
+<app-word-details></app-word-details>
+
+
+<!--      *ngFor="let Definition of Definitions" [Definition]="Definition"   -->
