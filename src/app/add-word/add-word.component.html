@@ -1,24 +1,22 @@
-<div class="mx-auto">
-    <button class="btn btn-info" (click)="show = !show">{{show ? 'Hide' : 'Add Word'}}</button>
-    </div>
-    <div *ngIf="show">
-        <div class="mx-auto col-6">
+
+   
+        <div class="mx-auto col-6 h-100">
         <form>
-            <div class="form-group text-light">
+            <div class="form-group">
             <label>Word: </label>
             <input class="form-control" type="text" name="word" placeholder="Enter Word" #word>
         </div>
-        <div class="form-group text-light">
+        <div class="form-group">
             <label>Definition: </label>
             <input class="form-control" type="text" name="definition" placeholder="Enter Word Definition" #definition>
         </div>
 
-        <div class="form-group text-light">
+        <div class="form-group">
             <label>Author: </label>
             <input class="form-control" type="text" name="author" placeholder="Enter your username" #author>
         </div>
-        
-        <div class="form-group text-light">
+
+        <div class="form-group">
             <label>Example: </label>
             <input class="form-control" type="text" name="example" placeholder="Enter Example" #example>
         </div>
@@ -28,4 +26,3 @@
             
         </form>
         </div>
-    </div>

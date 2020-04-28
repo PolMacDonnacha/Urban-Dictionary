@@ -8,18 +8,24 @@ import { WordDetailsComponent } from '../word-details/word-details.component';
   selector: 'app-word-list',
   templateUrl: './word-list.component.html',
   styleUrls: ['./word-list.component.css'],
-  providers: [UDApiService]
+  providers: [UDApiService,WordDetailsComponent]
 })
 export class WordListComponent implements OnInit {
- 
+  @Input() public words:Word[];
+  
+  public wordData:Word[];
+
 public Word: Word;
 
 
 
-  constructor(private _udService:UDApiService) {
+  constructor() {
+
+
       }
+
   ngOnInit() {
-   
+
   }
   
 }

@@ -14,14 +14,12 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 })
 export class WordDetailsComponent implements OnInit {
   @Output()public WordDetails:Word;
-  @Input()  public wordData:Word;
-  public words:Word[];
+   public words:Word[];
   WordList:WordDetails[];
 
       constructor(private _udService:UDApiService){
         this.getWordDefinition('stonks');
-       this.words = this._udService.getWords();
-       console.log('constructor wordsArray: ' + this._udService.getWords());
+        this.words = this._udService.getWords();
       }
 
   errormsg:any;
@@ -31,6 +29,7 @@ export class WordDetailsComponent implements OnInit {
     this._udService.getWordData(word).subscribe(
     data => {
         this.WordList = data.list;
+        console.table(this.WordList);
       this._udService.addWords(this.WordList);
       },
       error => this.errormsg = <any>error
@@ -39,10 +38,21 @@ export class WordDetailsComponent implements OnInit {
       return false;
   
   }
+  sortedWords():WordDetails[]{
+    return this.WordList.sort((a:WordDetails, b:WordDetails) => b.thumbs_up - a.thumbs_up);
+  }
+  public getWords():boolean
+  {
+    
+
+    this.words = this._udService.words;
+    console.table('getWords' + this.words);
+    return false;
+ }
 
   ngOnInit() {
-    console.log('wordlist getwords' + this._udService.getWords());
-    this._udService.getWords();
+  }
+
 }
-}
+
 

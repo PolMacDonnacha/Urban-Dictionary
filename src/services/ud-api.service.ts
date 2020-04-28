@@ -12,7 +12,7 @@ import { WordDetailsComponent } from 'src/app/word-details/word-details.componen
   providedIn: 'root'
 })
 export class UDApiService {
-  public words = [];
+  public words:Word[];
   public wordData:Word;
   private httpOptionsNoAuth:any;
   private _siteURL="https://mashape-community-urban-dictionary.p.rapidapi.com/define";
@@ -38,18 +38,23 @@ export class UDApiService {
       return Observable.throw(err.message);
    }
     
+   public getWords()
+  {
+
+    return this.words;
+ }
   
-  addWords(WordDetails){
+  addWords(WordDetails)
+  {
+    this.words = [];
+
     WordDetails.forEach(element => {
   this.wordData = new Word(element.word,element.definition,element.author,element.thumbs_up,element.thumbs_down,element.example,element.written_on);
-  console.table(this.wordData);
   this.words.push(this.wordData);
 });
+console.table(this.words);
   }
-  getWords(){
-    console.log('getWords' + this.words);
-    return this.words;
-  }
+  
   
   
 }

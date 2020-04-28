@@ -6,14 +6,15 @@ export interface IUDResponse
 }
 export interface WordDetails
 {
-     Word:string;
-     Definition:string;
-     Author:string;
-     Thumbs_up:number;
-     Thumbs_down:number;
-     Example:string;
-     Written_on:string;
+     word:string;
+     definition:string;
+     author:string;
+     thumbs_up:number;
+     thumbs_down:number;
+     example:string;
+     written_on:string;
     
+     
 }
 
  

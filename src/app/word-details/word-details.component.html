@@ -1,24 +1,36 @@
+<div class="container mt-3">
 <form>
-    <div class="form-group">
-      <input type="text" name="word" class="form-control" #word placeholder="Search words..">
+    <div class="form-group ml-3">
+    <div class="row">
+      <input type="text" name="word" class="form-control col-8" #word placeholder="Search words..">
+      <button (click)="getWordDefinition(word.value)" type="submit" class="btn btn-primary ml-4">Search</button>
     </div>
-    <button (click)="getWordDefinition(word.value)" type="submit" class="btn btn-primary">Search</button>
+    </div>
+   
   </form>
+</div>
 
 
-  <div class="container bg-light mx-6" *ngFor="let wordData of words">
-      <div class="">
-      <div class="row">
-    <h2 class="">{{wordData.Word}}</h2>
-    <h3>{{wordData.Definition}}</h3>
 
-<div>
-    <button>Upvote: {{wordData.Thumbs_up}}</button>    
-    <button>Downvote: {{wordData.Thumbs_down}}</button>
+  <div *ngFor="let wordData of sortedWords()">
+
+
+    <div class="container mx-auto border bg-light" >
+        <h2 class="text-primary text-lowercase text-capitalize">{{wordData.word}}</h2> 
+        <div class="row p-4 ">
+      <div class="col-9">
+      <h3>{{wordData.definition}}</h3>        
+    </div>
+    <div class=" ml-4 col-2">
+        <button class="btn btn-primary w-100 h-50">Upvote: {{wordData.thumbs_up}}</button>    
+        <button class="btn btn-danger mt-3  w-100 h-50">Downvote: {{wordData.thumbs_down}}</button>
+      </div>
+    </div>
+    <div class="col-4">
+        <span>Written by: {{wordData.author}}<br>Date Published: {{wordData.written_on}}</span>
+        <span class=""></span>
+    </div>
 </div>
 </div>
-<span>Written by: {{wordData.Author}}</span>
-<span class="ml-5">Date Published: {{wordData.Written_on}}</span>
-</div>
-</div>
+
 
