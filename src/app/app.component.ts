@@ -3,7 +3,6 @@ import {UDApiService} from 'src/services/ud-api.service';
 import { IUDResponse } from 'src/app/interfaces/UDResponse';
 
 import {Word} from "src/app/word.model";
-import { IWord } from './interfaces/Word';
 
 
 @Component({
@@ -13,5 +12,4 @@ import { IWord } from './interfaces/Word';
   providers: [UDApiService]
 })
 export class AppComponent {
-  
 }

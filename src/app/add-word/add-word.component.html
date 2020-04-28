@@ -1,1 +1,31 @@
-<p>add-word works!</p>
+<div class="mx-auto">
+    <button class="btn btn-info" (click)="show = !show">{{show ? 'Hide' : 'Add Word'}}</button>
+    </div>
+    <div *ngIf="show">
+        <div class="mx-auto col-6">
+        <form>
+            <div class="form-group text-light">
+            <label>Word: </label>
+            <input class="form-control" type="text" name="word" placeholder="Enter Word" #word>
+        </div>
+        <div class="form-group text-light">
+            <label>Definition: </label>
+            <input class="form-control" type="text" name="definition" placeholder="Enter Word Definition" #definition>
+        </div>
+
+        <div class="form-group text-light">
+            <label>Author: </label>
+            <input class="form-control" type="text" name="author" placeholder="Enter your username" #author>
+        </div>
+        
+        <div class="form-group text-light">
+            <label>Example: </label>
+            <input class="form-control" type="text" name="example" placeholder="Enter Example" #example>
+        </div>
+       
+   
+            <button class=" mx-auto btn btn-primary" type="submit" (click)="addTheWord(word.value,definition.value,example.value,author.value)">Add Your Word</button>
+            
+        </form>
+        </div>
+    </div>

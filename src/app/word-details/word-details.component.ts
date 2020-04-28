@@ -3,6 +3,7 @@ import {UDApiService} from 'src/services/ud-api.service';
 import { IUDResponse,WordDetails } from 'src/app/interfaces/UDResponse';
 import { WordListComponent } from '../word-list/word-list.component';
 import {Word} from 'src/app/word.model';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
 @Component({
@@ -12,45 +13,36 @@ import {Word} from 'src/app/word.model';
   providers: [UDApiService]
 })
 export class WordDetailsComponent implements OnInit {
-  public list:IUDResponse[];
-  public WordDetails:WordDetails[];
-  words = [];
-  public wordData:Word;
+  @Output()public WordDetails:Word;
+  @Input()  public wordData:Word;
+  public words:Word[];
+  WordList:WordDetails[];
 
-
-  /*@Output()wordData :EventEmitter<WordDetails[]>;
-  constructor(private _udService:UDApiService) {
-      this.wordData = new EventEmitter();*/
       constructor(private _udService:UDApiService){
-        console.log('WordData ' + this.getWordDefinition('lol'));
-
+        this.getWordDefinition('stonks');
+       this.words = this._udService.getWords();
+       console.log('constructor wordsArray: ' + this._udService.getWords());
       }
 
-  // }
-  
   errormsg:any;
   
    public getWordDefinition(word:string):boolean
   {
     this._udService.getWordData(word).subscribe(
     data => {
-      this.WordDetails = data.list;
-     
-    
-        console.log('Definition 1: ' + this.WordDetails[0].definition);
-        this.words = [];
-        this._udService.separateDefinitions(this.WordDetails);
-        this.words.push(new Word(this.WordDetails[0].word,this.WordDetails[0].definition,this.WordDetails[0].author,this.WordDetails[0].thumbs_up,this.WordDetails[0].thumbs_down,this.WordDetails[0].example,this.WordDetails[0].written_on));
-    console.log(this.WordDetails[0].word);
+        this.WordList = data.list;
+      this._udService.addWords(this.WordList);
       },
       error => this.errormsg = <any>error
     );
+
       return false;
+  
   }
 
   ngOnInit() {
-    this.words = this._udService.getWords();
-    console.log('WordList nGOnInit ' + this.words);
-  }
+    console.log('wordlist getwords' + this._udService.getWords());
+    this._udService.getWords();
+}
 }
 

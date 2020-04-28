@@ -2,15 +2,16 @@
 <div class="container">
   <h1 class="">Urban Dictionary</h1>
 
- <form>
-  <div class="form-group">
-    <input type="text" name="word" class="form-control" #word placeholder="Search words..">
-  </div>
-  <button (click)="getWordDefinition(word.value)" type="submit" class="btn btn-primary">Search</button>
-</form>
-</div>
-<app-word-list *ngFor="let word of words" ></app-word-list>
 <app-word-details></app-word-details>
+<app-word-list *ngFor="let wordData of words"></app-word-list>
+</div>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.14.2/firebase-app.js"></script>
 
-<!--      *ngFor="let Definition of Definitions" [Definition]="Definition"   -->
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.14.2/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>

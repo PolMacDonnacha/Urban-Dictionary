@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError, tap,map } from 'rxjs/operators';
 import { IUDResponse, WordDetails } from 'src/app/interfaces/UDResponse';
 import { Word } from 'src/app/word.model';
+import { WordDetailsComponent } from 'src/app/word-details/word-details.component';
 
 
 
@@ -11,10 +12,8 @@ import { Word } from 'src/app/word.model';
   providedIn: 'root'
 })
 export class UDApiService {
+  public words = [];
   public wordData:Word;
-  public WordDetails:WordDetails[];
-  public words=[];
-  private _udService:UDApiService
   private httpOptionsNoAuth:any;
   private _siteURL="https://mashape-community-urban-dictionary.p.rapidapi.com/define";
   constructor(private _http:HttpClient) {
@@ -33,21 +32,24 @@ export class UDApiService {
     ),
       catchError(this.handleError)
     );
-
+  }
+    private handleError(err:HttpErrorResponse) {
+      console.log('UDApiService: ', err.message);
+      return Observable.throw(err.message);
+   }
     
+  
+  addWords(WordDetails){
+    WordDetails.forEach(element => {
+  this.wordData = new Word(element.word,element.definition,element.author,element.thumbs_up,element.thumbs_down,element.example,element.written_on);
+  console.table(this.wordData);
+  this.words.push(this.wordData);
+});
   }
   getWords(){
+    console.log('getWords' + this.words);
     return this.words;
   }
-  separateDefinitions(WordDetails){
-    
-    for (let index = 0; index < this.WordDetails.length; index++) {
-      this.wordData = WordDetails[index];
-      console.log(this.WordDetails);
-    }
-  }
-  private handleError(err:HttpErrorResponse) {
-    console.log('UDApiService: ', err.message);
-    return Observable.throw(err.message);
- }
+  
+  
 }

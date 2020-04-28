@@ -1,1 +1,24 @@
+<form>
+    <div class="form-group">
+      <input type="text" name="word" class="form-control" #word placeholder="Search words..">
+    </div>
+    <button (click)="getWordDefinition(word.value)" type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+
+  <div class="container bg-light mx-6" *ngFor="let wordData of words">
+      <div class="">
+      <div class="row">
+    <h2 class="">{{wordData.Word}}</h2>
+    <h3>{{wordData.Definition}}</h3>
+
+<div>
+    <button>Upvote: {{wordData.Thumbs_up}}</button>    
+    <button>Downvote: {{wordData.Thumbs_down}}</button>
+</div>
+</div>
+<span>Written by: {{wordData.Author}}</span>
+<span class="ml-5">Date Published: {{wordData.Written_on}}</span>
+</div>
+</div>
 
