@@ -6,6 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { WordDetailsComponent } from './word-details/word-details.component';
 import { UDApiService } from 'src/services/ud-api.service';
 import { AddWordComponent } from './add-word/add-word.component';
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {AngularFireModule} from "@angular/fire";
+import { environment } from 'src/environments/environment';
 
 
 
@@ -19,6 +22,8 @@ import { AddWordComponent } from './add-word/add-word.component';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     HttpClientModule
   ],
   exports: [WordDetailsComponent],
