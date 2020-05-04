@@ -1,7 +1,6 @@
 import { Component, OnInit,Output,Input,EventEmitter } from '@angular/core';
 import {UDApiService} from 'src/services/ud-api.service';
-import { IUDResponse,WordDetails } from 'src/app/interfaces/UDResponse';
-import { WordListComponent } from '../word-list/word-list.component';
+import { WordDetails } from 'src/app/interfaces/UDResponse';
 import {Word} from 'src/app/word.model';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 

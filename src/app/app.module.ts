@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { WordListComponent } from './word-list/word-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WordDetailsComponent } from './word-details/word-details.component';
 import { UDApiService } from 'src/services/ud-api.service';
@@ -9,13 +8,13 @@ import { AddWordComponent } from './add-word/add-word.component';
 import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {AngularFireModule} from "@angular/fire";
 import { environment } from 'src/environments/environment';
+import {WordDatabaseService} from 'src/app/services/word-database.service'
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    WordListComponent,
     WordDetailsComponent,
     AddWordComponent
     
@@ -27,7 +26,7 @@ import { environment } from 'src/environments/environment';
     HttpClientModule
   ],
   exports: [WordDetailsComponent],
-  providers: [UDApiService],
+  providers: [UDApiService,WordDatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

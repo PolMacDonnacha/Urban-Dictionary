@@ -54,7 +54,7 @@ export class UDApiService {
   addWords(WordDetails:WordDetails[])
   {
     this.words = [];
-this.wordDataCollection.add(JSON.parse(JSON.stringify(WordDetails[0])));
+//this.wordDataCollection.add(JSON.parse(JSON.stringify(WordDetails[0])));
     WordDetails.forEach(element => {
   this.wordData = new Word(element.word,element.definition,element.author,element.example,element.thumbs_up,element.thumbs_down,element.written_on);
   this.words.push(this.wordData);
